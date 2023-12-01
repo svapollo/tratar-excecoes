@@ -1,4 +1,6 @@
 from exceptions import SaldoInsuficienteError
+from leitor import LeitorDeArquivo
+
 
 class Cliente:
     def __init__(self, nome, cpf, profissao):
@@ -103,10 +105,28 @@ def main():
 # conta_corrente.sacar(-250)
 # print('Saldo: ', conta_corrente.saldo)
 
-conta_corrente1 = ContaCorrente(None, 400, 1234567)
-conta_corrente2 = ContaCorrente(None, 401, 1234568)
+# conta_corrente1 = ContaCorrente(None, 400, 1234567)
+# conta_corrente2 = ContaCorrente(None, 401, 1234568)
 
-conta_corrente1.transferir(100, conta_corrente2)
-print('ContaCorrente1 Saldo: ', conta_corrente1.saldo)
-print('ContaCorrente2 Saldo: ', conta_corrente2.saldo)
+# conta_corrente1.transferir(100, conta_corrente2)
+# print('ContaCorrente1 Saldo: ', conta_corrente1.saldo)
+# print('ContaCorrente2 Saldo: ', conta_corrente2.saldo)
 
+
+# Substituir bloco abaixo para usar o with
+# try:
+#     leitor = LeitorDeArquivo("aquivo.txt")
+#     leitor.ler_proxima_linha()
+#     leitor.ler_proxima_linha()
+#     leitor.ler_proxima_linha()
+
+# # except IOError:
+# #     print("Exceção do tipo IOError capturada e tratada")
+
+# finally:
+#     # locals() para acessar todas os indentificadores locais
+#     if 'leitor' in locals():
+#         leitor.fechar()
+
+with LeitorDeArquivo("arquivo.txt") as leitor:
+    leitor.ler_proxima_linha()
