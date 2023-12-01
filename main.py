@@ -30,7 +30,8 @@ class ContaCorrente:
         if not isinstance(value, int):
             raise ValueError("O atributo agencia deve ser um inteiro", value)
         elif value <= 0:
-            raise ValueError("O atributo agencia deve ser maior que zero", value)
+            raise ValueError("O atributo agencia deve\
+                              ser maior que zero", value)
 
         self.__agencia = value
 
@@ -40,7 +41,7 @@ class ContaCorrente:
 
     def __set_numero(self, value):
         if not isinstance(value, int):
-             raise ValueError("O atributo numero deve ser um inteiro")
+            raise ValueError("O atributo numero deve ser um inteiro")
         elif value <= 0:
             raise ValueError("O atributo numero deve ser maior que zero")
         self.__numero = value
@@ -57,20 +58,24 @@ class ContaCorrente:
 
     def transferir(self, valor, favorecido):
         if valor < 0:
-            raise ValueError("O valor a ser sacado não pode ser menor que zero")
+            raise ValueError("O valor a ser sacado não pode\
+                              ser menor que zero")
         self.sacar(valor)
         favorecido.depositar(valor)
 
     def sacar(self, valor):
         if valor < 0:
-            raise ValueError("O valor a ser sacado não pode ser menor que zero")
+            raise ValueError("O valor a ser sacado não\
+                              pode ser menor que zero")
         if self.saldo < valor:
             raise SaldoInsuficienteError('', self.saldo, valor)
-            # raise SaldoInsuficienteError('texto',saldo=self.saldo, valor=valor)
+            # raise SaldoInsuficienteError('texto',
+            #                               saldo=self.saldo, valor=valor)
         self.saldo -= valor
 
     def depositar(self, valor):
         self.saldo += valor
+
 
 def main():
     import sys
